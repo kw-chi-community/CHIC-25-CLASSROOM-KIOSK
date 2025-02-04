@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchScheduleData } from "../api/scheduleApi";
+import { fetchScheduleData } from "../api/fetchScheduleData";
 import { useRoom } from "../../../context/RoomContext"; // 전역 roomNumber 사용
 
 // 강의 및 예약 데이터 타입 정의

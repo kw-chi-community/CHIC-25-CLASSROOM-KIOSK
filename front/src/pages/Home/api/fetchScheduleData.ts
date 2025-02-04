@@ -61,7 +61,7 @@ export const fetchScheduleData = async (
       },
       {
         start: "20:30",
-        end: "22:00",
+        end: "23:00",
         type: "강의",
         title: "인공지능 개론",
         professor: "최교수",
