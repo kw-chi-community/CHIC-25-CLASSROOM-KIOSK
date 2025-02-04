@@ -14,27 +14,39 @@ const Section3: React.FC = () => {
   };
 
   return (
-    <div>
-      <div>
-        <p>공지사항</p>
-        <Link to="/notice">
-          <ImgButton imgSrc="/path/to/notice-icon.png" />
+    <div className="flex flex-col items-center justify-center gap-20 h-full">
+      <div className="flex flex-col items-center">
+        <p className="text-lg mb-4">공지사항</p>
+        <Link to="/notice" className="w-24 h-24">
+          <ImgButton imgSrc="/image/notice-icon.png" />
         </Link>
       </div>
-      <div>
-        <p>예약하기</p>
-        <ImgButton
-          imgSrc="/path/to/reservation-icon.png"
-          onClick={handleReservationClick}
-        />
+      <div className="flex flex-col items-center">
+        <p className="text-lg mb-4">예약 QR</p>
+        <div className="w-24 h-24">
+          <ImgButton
+            imgSrc="/image/reservation-icon.png"
+            onClick={handleReservationClick}
+          />
+        </div>
       </div>
 
       {/* 팝업 구현 */}
       {isPopupVisible && (
-        <div>
-          <div>
-            <p>예약 팝업 내용입니다.</p>
-            <button onClick={closePopup}>닫기</button>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-10 rounded-lg shadow-lg text-center">
+            <p>큐알코드를 찍어 강의실 예약 사이트로 이동하세요!</p>
+            <img
+              className="mb-2 m-auto"
+              src="/sample/qr-image.png"
+              alt="QR Code"
+            />
+            <button
+              className="px-3 py-1 bg-blue-500 text-white rounded text-sm mt-3"
+              onClick={closePopup}
+            >
+              닫기
+            </button>
           </div>
         </div>
       )}
