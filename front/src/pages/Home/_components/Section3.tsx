@@ -33,20 +33,26 @@ const Section3: React.FC = () => {
 
       {/* 팝업 구현 */}
       {isPopupVisible && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-10 rounded-lg shadow-lg text-center">
-            <p>큐알코드를 찍어 강의실 예약 사이트로 이동하세요!</p>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm">
+          <div className="relative flex flex-col items-center bg-transparent text-white">
+            {/* 닫기 버튼 */}
+            <button
+              className="fixed top-5 right-5 text-white text-3xl"
+              onClick={closePopup}
+            >
+              ✖
+            </button>
+            {/* 팝업 텍스트 */}
+            <p className="text-2xl font-bold text-center mb-3">
+              QR코드를 스캔해 강의실을 예약하세요.
+            </p>
+            <p className="text-xl">{"> 강의실 예약 사이트로 이동"}</p>
+            {/* QR 코드 */}
             <img
-              className="mb-2 m-auto"
+              className="w-80 h-80 mt-4"
               src="/sample/qr-image.png"
               alt="QR Code"
             />
-            <button
-              className="px-3 py-1 bg-blue-500 text-white rounded text-sm mt-3"
-              onClick={closePopup}
-            >
-              닫기
-            </button>
           </div>
         </div>
       )}
