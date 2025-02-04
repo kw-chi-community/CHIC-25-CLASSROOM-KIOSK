@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
+import { fetchScheduleData } from "../api/scheduleApi";
+import { useRoom } from "../../../context/RoomContext"; // 전역 roomNumber 사용
 
 // 강의 및 예약 데이터 타입 정의
 interface ScheduleEntry {
-  start: string; // 시작 시간 (HH:mm)
-  end: string; // 종료 시간 (HH:mm)
-  type: "강의" | "예약"; // 강의 or 예약
-  title: string; // 강의 또는 예약 제목
-  professor?: string; // 강의인 경우 교수 이름
-  reserver?: string; // 예약인 경우 예약자 이름
+  start: string;
+  end: string;
+  type: "강의" | "예약";
+  title: string;
+  professor?: string;
+  reserver?: string;
 }
 
 const Section1: React.FC = () => {
+  const { roomNumber } = useRoom(); // 전역 상태에서 roomNumber 가져오기
   const [currentStatus, setCurrentStatus] = useState<ScheduleEntry | null>(
     null
   );
+  const [scheduleData, setScheduleData] = useState<ScheduleEntry[]>([]);
 
   // 현재 시간을 "HH:mm" 형식으로 가져오는 함수
   const getCurrentTime = (): string => {
@@ -25,55 +29,26 @@ const Section1: React.FC = () => {
     );
   };
 
-  // 강의실 예약 데이터
-  const scheduleData: ScheduleEntry[] = [
-    {
-      start: "09:00",
-      end: "11:45",
-      type: "강의",
-      title: "웹서비스설계및실습",
-      professor: "김교수",
-    },
-    {
-      start: "13:00",
-      end: "15:00",
-      type: "예약",
-      title: "동아리 회의",
-      reserver: "박OO",
-    },
-    {
-      start: "15:30",
-      end: "17:30",
-      type: "강의",
-      title: "데이터베이스",
-      professor: "이교수",
-    },
-    {
-      start: "18:00",
-      end: "20:00",
-      type: "예약",
-      title: "CHIC 중간총회",
-      reserver: "손O현",
-    },
-    {
-      start: "20:30",
-      end: "22:00",
-      type: "강의",
-      title: "인공지능 개론",
-      professor: "최교수",
-    },
-  ];
+  // API를 호출하여 scheduleData를 불러오는 함수
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchScheduleData(roomNumber);
+      setScheduleData(data);
+    };
 
+    fetchData();
+  }, [roomNumber]); // roomNumber가 변경될 때마다 API 호출
+
+  // 현재 시간과 예약된 시간 비교
   useEffect(() => {
     const now = getCurrentTime();
 
-    // 현재 시간과 예약된 시간 비교
     const activeSession = scheduleData.find(
       (session) => session.start <= now && session.end >= now
     );
 
     setCurrentStatus(activeSession ?? null);
-  }, []);
+  }, [scheduleData]); // scheduleData가 변경될 때마다 실행
 
   return (
     <div
