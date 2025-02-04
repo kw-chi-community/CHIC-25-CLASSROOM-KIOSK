@@ -1,14 +1,5 @@
+import { ScheduleDTO } from "../_components/ScheduleDTO";
 // import axios from "axios";
-
-// ScheduleEntry 타입 정의
-interface ScheduleEntry {
-  start: string; // 시작 시간 (HH:mm)
-  end: string; // 종료 시간 (HH:mm)
-  type: "강의" | "예약"; // 강의 or 예약
-  title: string; // 강의 또는 예약 제목
-  professor?: string; // 강의인 경우 교수 이름
-  reserver?: string; // 예약인 경우 예약자 이름
-}
 
 // 스케줄 데이터를 불러오는 API 함수
 // export const fetchScheduleData = async (
@@ -25,7 +16,7 @@ interface ScheduleEntry {
 
 export const fetchScheduleData = async (
   roomNumber: string
-): Promise<ScheduleEntry[]> => {
+): Promise<ScheduleDTO[]> => {
   try {
     console.log(`Fetching schedule data for room ${roomNumber}...`);
 

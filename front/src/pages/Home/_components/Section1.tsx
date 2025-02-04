@@ -1,23 +1,12 @@
 import { useState, useEffect } from "react";
 import { fetchScheduleData } from "../api/fetchScheduleData";
 import { useRoom } from "../../../context/RoomContext"; // 전역 roomNumber 사용
-
-// 강의 및 예약 데이터 타입 정의
-interface ScheduleEntry {
-  start: string;
-  end: string;
-  type: "강의" | "예약";
-  title: string;
-  professor?: string;
-  reserver?: string;
-}
+import { ScheduleDTO } from "./ScheduleDTO";
 
 const Section1: React.FC = () => {
   const { roomNumber } = useRoom(); // 전역 상태에서 roomNumber 가져오기
-  const [currentStatus, setCurrentStatus] = useState<ScheduleEntry | null>(
-    null
-  );
-  const [scheduleData, setScheduleData] = useState<ScheduleEntry[]>([]);
+  const [currentStatus, setCurrentStatus] = useState<ScheduleDTO | null>(null);
+  const [scheduleData, setScheduleData] = useState<ScheduleDTO[]>([]);
 
   // 현재 시간을 "HH:mm" 형식으로 가져오는 함수
   const getCurrentTime = (): string => {

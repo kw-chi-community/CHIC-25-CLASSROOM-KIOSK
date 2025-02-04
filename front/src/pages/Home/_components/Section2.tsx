@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
 import { useRoom } from "../../../context/RoomContext";
 import { fetchScheduleData } from "../api/fetchScheduleData";
-
-// 강의 및 예약 데이터 타입 정의
-interface ScheduleEntry {
-  start: string;
-  end: string;
-  type: "강의" | "예약";
-  title: string;
-  professor?: string;
-  reserver?: string;
-}
+import { ScheduleDTO } from "./ScheduleDTO";
 
 const Section2: React.FC = () => {
   const { roomNumber } = useRoom();
-  const [scheduleData, setScheduleData] = useState<ScheduleEntry[]>([]);
+  const [scheduleData, setScheduleData] = useState<ScheduleDTO[]>([]);
 
   const today = new Date().toLocaleDateString("ko-KR", {
     month: "long",
