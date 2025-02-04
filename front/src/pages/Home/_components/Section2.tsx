@@ -1,5 +1,7 @@
+import { useRoom } from "../../../context/RoomContext";
+
 const Section2: React.FC = () => {
-  const roomNumber = import.meta.env.VITE_ROOM_NUMBER;
+  const { roomNumber } = useRoom();
 
   const today = new Date().toLocaleDateString("ko-KR", {
     month: "long",

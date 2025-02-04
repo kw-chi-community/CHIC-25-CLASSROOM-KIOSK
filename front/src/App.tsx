@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Notice from "./pages/Notice/Notice";
+import { RoomProvider } from "./context/RoomContext";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <RoomProvider>
+      <RouterProvider router={router} />
+    </RoomProvider>
+  );
 }
 
 export default App;
