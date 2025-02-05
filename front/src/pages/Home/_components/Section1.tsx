@@ -33,7 +33,7 @@ const Section1: React.FC = () => {
     const now = getCurrentTime();
 
     const activeSession = scheduleData.find(
-      (session) => session.start <= now && session.end >= now
+      (session) => session.startTime <= now && session.endTime >= now
     );
 
     setCurrentStatus(activeSession ?? null);
