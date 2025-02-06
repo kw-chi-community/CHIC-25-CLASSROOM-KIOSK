@@ -4,7 +4,7 @@ import { fetchScheduleData } from "../api/fetchScheduleData";
 import { ScheduleDTO } from "./ScheduleDTO";
 
 const Section2: React.FC = () => {
-  const { roomNumber } = useRoom();
+  const { roomNumber } = useRoom(); // 전역 상태에서 roomNumber 가져오기
   const [scheduleData, setScheduleData] = useState<ScheduleDTO[]>([]);
 
   const today = new Date().toLocaleDateString("ko-KR", {
@@ -12,14 +12,33 @@ const Section2: React.FC = () => {
     day: "numeric",
   });
 
-  // API 호출하여 scheduleData 가져오기
+  // API를 호출하여 scheduleData를 불러오는 함수
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchScheduleData(roomNumber);
-      setScheduleData(data);
+      try {
+        const data = await fetchScheduleData(roomNumber);
+        setScheduleData(data);
+      } catch (error) {
+        console.error("스케줄 데이터를 불러오는 중 오류 발생:", error);
+      }
     };
 
-    fetchData();
+    fetchData(); // 첫 실행
+
+    // 현재 시간과 자정까지 남은 시간 계산
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0); // 다음 자정 (00:00)으로 설정
+    const timeUntilMidnight = midnight.getTime() - now.getTime();
+
+    // 자정에 실행할 setTimeout 설정
+    const timeoutId = setTimeout(() => {
+      fetchData(); // 첫 실행
+      const intervalId = setInterval(fetchData, 24 * 60 * 60 * 1000); // 이후 매일 24시간마다 실행
+      return () => clearInterval(intervalId); // interval 정리
+    }, timeUntilMidnight);
+
+    return () => clearTimeout(timeoutId); // 컴포넌트 언마운트 시 clear
   }, [roomNumber]);
 
   return (

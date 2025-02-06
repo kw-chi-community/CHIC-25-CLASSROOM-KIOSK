@@ -6,7 +6,16 @@ import { ScheduleDTO } from "../_components/ScheduleDTO";
 //   roomNumber: string
 // ): Promise<ScheduleDTO[]> => {
 //   try {
-//     const response = await axios.get(`/api/status?roomNumber=${roomNumber}`);
+//     // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
+//     const today = new Date().toISOString().split("T")[0];
+
+//     const response = await axios.get(`/api/status`, {
+//       params: {
+//         roomNumber,
+//         date: today, // YYYY-MM-DD 형식의 날짜 추가
+//       },
+//     });
+
 //     return response.data;
 //   } catch (error) {
 //     console.error("Error fetching schedule data:", error);
