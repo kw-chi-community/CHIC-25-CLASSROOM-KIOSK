@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Notice from "./pages/Notice/Notice";
-import { RoomProvider } from "./context/RoomContext";
+import { ReservationProvider } from "./context/ReservationContext";
 
 const router = createBrowserRouter([
   {
@@ -16,9 +16,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RoomProvider>
+    <ReservationProvider>
       <RouterProvider router={router} />
-    </RoomProvider>
+    </ReservationProvider>
   );
 }
 

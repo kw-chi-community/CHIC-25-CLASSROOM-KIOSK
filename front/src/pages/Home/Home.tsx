@@ -13,7 +13,7 @@ const Home: React.FC = () => {
       {/* 하단 영역 - 좌우 레이아웃 */}
       <div className="flex-1 flex">
         {/* 좌측: 이용 시간표 */}
-        <section className="bg-gray-50 p-6 shadow-md w-4/5 mr-4">
+        <section className="bg-gray/15 p-6 shadow-md w-4/5 mr-4">
           <Section2 />
         </section>
 
