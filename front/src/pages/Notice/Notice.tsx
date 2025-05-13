@@ -41,39 +41,35 @@ const Notice = () => {
       <div className="max-w-6xl mx-auto">
         {/* 헤더 */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">공지사항</h1>
-          <p className="text-gray-600">
-            [{import.meta.env.VITE_BUILDING_NAME}{" "}
-            {import.meta.env.VITE_ROOM_NUMBER || "101호"}]의 공지사항을
-            확인하세요
-          </p>
+          <h1 className="text-3xl font-bold mb-2">공지사항</h1>
+          <p className="text-lg">강의실 예약 관련 공지사항을 확인하세요</p>
         </div>
 
         {/* 메인 컨텐츠 */}
         <div className="bg-white rounded-lg shadow-md">
           {error ? (
-            <div className="p-8 text-center text-red-600">{error}</div>
+            <div className="p-8 text-center text-red">{error}</div>
           ) : notices.length > 0 ? (
             <>
               {/* 중요 공지 */}
               {importantNotices.length > 0 && (
-                <div className="border-b border-gray-200">
+                <div className="border-b border-gray/70">
                   {importantNotices.map((notice) => (
                     <Link
                       to={`/notice/${notice.id}`}
                       key={notice.id}
                       className="block hover:bg-purple/5 transition-all duration-200"
                     >
-                      <div className="px-6 py-4 flex items-center justify-between border-b border-gray-100 last:border-b-0">
+                      <div className="px-6 py-4 flex items-center justify-between border-b border-gray/50">
                         <div className="flex items-center space-x-4">
-                          <span className="px-3 py-1 bg-purple/10 text-purple rounded-full text-sm font-semibold">
+                          <span className="px-3 py-1 bg-purple/10 text-purple rounded-full font-semibold">
                             중요
                           </span>
                           <span className="text-lg font-medium">
                             {notice.title}
                           </span>
                         </div>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-black/50">
                           {notice.created_at}
                         </span>
                       </div>
@@ -87,18 +83,16 @@ const Notice = () => {
                 <Link
                   to={`/notice/${notice.id}`}
                   key={notice.id}
-                  className="block hover:bg-gray-50 transition-all duration-200"
+                  className="block hover:bg-purple/5 transition-all duration-200"
                 >
-                  <div className="px-6 py-4 flex items-center justify-between border-b border-gray-100 last:border-b-0">
+                  <div className="px-6 py-4 flex items-center justify-between border-b border-gray/50">
                     <div className="flex items-center space-x-4">
-                      <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
+                      <span className="px-3 py-1 bg-gray/50  rounded-full">
                         일반
                       </span>
                       <span className="text-lg">{notice.title}</span>
                     </div>
-                    <span className="text-sm text-gray-500">
-                      {notice.created_at}
-                    </span>
+                    <span className="text-black/50">{notice.created_at}</span>
                   </div>
                 </Link>
               ))}
