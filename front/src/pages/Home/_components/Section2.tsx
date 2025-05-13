@@ -49,8 +49,8 @@ const Section2: React.FC = () => {
     <div className="flex flex-col justify-center items-center overflow-hidden p-6">
       <p className="text-xl font-semibold mb-8 text-center">
         [{import.meta.env.VITE_BUILDING_NAME}{" "}
-        {import.meta.env.VITE_ROOM_NUMBER || "101"}
-        호] {today} 강의실 이용 시간표
+        {import.meta.env.VITE_ROOM_NUMBER || "101호"}] {today} 강의실 이용
+        시간표
       </p>
 
       {/* 스크롤이 필요한 리스트 영역 */}
