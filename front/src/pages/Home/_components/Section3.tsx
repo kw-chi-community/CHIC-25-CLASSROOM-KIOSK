@@ -14,16 +14,16 @@ const Section3: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-20 h-full">
+    <div className="flex flex-col items-center justify-center gap-36 h-full">
       <div className="flex flex-col items-center">
-        <p className="text-lg mb-4">공지사항</p>
-        <Link to="/notice" className="w-24 h-24">
+        <p className="text-xl mb-4">공지사항</p>
+        <Link to="/notice" className="w-28 h-28">
           <ImgButton imgSrc="/image/notice-icon.png" />
         </Link>
       </div>
       <div className="flex flex-col items-center">
-        <p className="text-lg mb-4">예약 QR</p>
-        <div className="w-24 h-24">
+        <p className="text-xl mb-4">예약 QR</p>
+        <div className="w-28 h-28">
           <ImgButton
             imgSrc="/image/reservation-icon.png"
             onClick={handleReservationClick}

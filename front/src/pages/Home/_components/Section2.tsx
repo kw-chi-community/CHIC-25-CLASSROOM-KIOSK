@@ -47,14 +47,14 @@ const Section2: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-center items-center p-6">
-      <p className="text-xl font-semibold mb-8 text-center">
+      <p className="text-2xl font-semibold mb-8 text-center">
         [{import.meta.env.VITE_BUILDING_NAME}{" "}
         {import.meta.env.VITE_ROOM_NUMBER || "101호"}] {today} 강의실 이용
         시간표
       </p>
 
       {/* 스크롤이 필요한 리스트 영역 */}
-      <div className="w-full max-w-5xl h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 rounded-lg border border-gray p-2">
+      <div className="w-full max-w-5xl h-full overflow-y-auto scrollbar-thin scrollbar-thumb-darkgray scrollbar-track-gray-200 rounded-lg border border-gray p-2">
         <ul className="space-y-2">
           {scheduleData.length > 0 ? (
             scheduleData.map((item, index) => (
