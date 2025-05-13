@@ -37,6 +37,13 @@ const mockData: fetchReservationSchedulesDto[] = [
     subject: "알고리즘",
     professor: "정교수",
   },
+  {
+    type: "reservation",
+    start_time: "18:30",
+    end_time: "20:00",
+    purpose: "취업 준비 모임",
+    user: "박학생",
+  },
 ];
 
 export const fetchReservationSchedules = async (

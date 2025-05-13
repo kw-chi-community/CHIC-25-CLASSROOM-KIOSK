@@ -14,6 +14,37 @@ const Section2: React.FC = () => {
     return name[0] + "O".repeat(name.length - 1);
   };
 
+  // 현재 시간을 "HH:mm" 형식으로 가져오는 함수
+  const getCurrentTime = (): string => {
+    const now = new Date();
+    return `${now.getHours().toString().padStart(2, "0")}:${now
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+  };
+
+  // 일정이 종료되었는지 확인하는 함수
+  const isScheduleEnded = (endTime: string): boolean => {
+    return endTime < getCurrentTime();
+  };
+
+  // 현재 진행 중인 일정인지 확인하는 함수
+  const isCurrentlyActive = (startTime: string, endTime: string): boolean => {
+    const currentTime = getCurrentTime();
+    return startTime <= currentTime && currentTime <= endTime;
+  };
+
+  // 일정 항목의 스타일을 결정하는 함수
+  const getScheduleItemStyle = (item: (typeof scheduleData)[0]): string => {
+    if (isScheduleEnded(item.end_time)) {
+      return "opacity-20 bg-white";
+    }
+    if (isCurrentlyActive(item.start_time, item.end_time)) {
+      return item.type === "lecture" ? "bg-purple/20" : "bg-yellow/20";
+    }
+    return "bg-white";
+  };
+
   return (
     <div className="flex flex-col justify-center items-center overflow-hidden p-6">
       <p className="text-xl font-semibold mb-8 text-center">
@@ -29,7 +60,9 @@ const Section2: React.FC = () => {
             scheduleData.map((item, index) => (
               <li
                 key={index}
-                className="grid grid-cols-4 items-center p-4 border border-gray rounded-lg bg-white shadow-sm"
+                className={`grid grid-cols-4 items-center p-4 border border-gray rounded-lg shadow-sm ${getScheduleItemStyle(
+                  item
+                )}`}
               >
                 <span className="font-medium text-lg">
                   {item.start_time}~{item.end_time}
