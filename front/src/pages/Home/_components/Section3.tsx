@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ImgButton from "../../../components/ImgButton";
+import { Bell, CalendarCheck, X } from "lucide-react";
 
 const Section3: React.FC = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
@@ -14,21 +14,20 @@ const Section3: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-20 h-full">
-      <div className="flex flex-col items-center">
-        <p className="text-lg mb-4">공지사항</p>
-        <Link to="/notice" className="w-24 h-24">
-          <ImgButton imgSrc="/image/notice-icon.png" />
-        </Link>
-      </div>
-      <div className="flex flex-col items-center">
-        <p className="text-lg mb-4">예약 QR</p>
-        <div className="w-24 h-24">
-          <ImgButton
-            imgSrc="/image/reservation-icon.png"
-            onClick={handleReservationClick}
-          />
-        </div>
+    <div className="flex flex-col items-center justify-center gap-24 h-full">
+      <Link
+        to="/notice"
+        className="flex flex-col items-center hover:text-purple transition-colors duration-200 ease-in-out cursor-pointer"
+      >
+        <p className="text-xl mb-4">공지사항</p>
+        <Bell size={120} strokeWidth={1.5} />
+      </Link>
+      <div
+        className="flex flex-col items-center hover:text-purple transition-colors duration-200 ease-in-out cursor-pointer"
+        onClick={handleReservationClick}
+      >
+        <p className="text-xl mb-4">예약 QR</p>
+        <CalendarCheck size={120} strokeWidth={1.5} />
       </div>
 
       {/* 팝업 구현 */}
@@ -40,7 +39,7 @@ const Section3: React.FC = () => {
               className="fixed top-5 right-5 text-white text-3xl"
               onClick={closePopup}
             >
-              ✖
+              <X size={50} />
             </button>
             {/* 팝업 텍스트 */}
             <p className="text-2xl font-bold text-center mb-3">
