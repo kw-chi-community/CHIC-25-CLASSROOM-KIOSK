@@ -14,7 +14,7 @@ const Section3: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-36 h-full">
+    <div className="flex flex-col items-center justify-center gap-24 h-full">
       <div className="flex flex-col items-center">
         <p className="text-xl mb-4">공지사항</p>
         <Link to="/notice" className="w-28 h-28">
