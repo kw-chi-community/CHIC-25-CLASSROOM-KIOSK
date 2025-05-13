@@ -6,7 +6,7 @@ import {
   ReactNode,
 } from "react";
 import { fetchReservationSchedules } from "../api/home/fetchReservationSchedules";
-import { fetchReservationSchedulesDto } from "../api/home/fetchReservationSchedulesDto";
+import { fetchReservationSchedulesDto } from "../api/home/dto/fetchReservationSchedulesDto";
 
 interface ReservationContextType {
   scheduleData: fetchReservationSchedulesDto[];

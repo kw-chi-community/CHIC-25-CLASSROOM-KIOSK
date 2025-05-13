@@ -1,4 +1,4 @@
-import { fetchReservationSchedulesDto } from "./fetchReservationSchedulesDto";
+import { fetchReservationSchedulesDto } from "./dto/fetchReservationSchedulesDto";
 
 // 임시 데이터
 const mockData: fetchReservationSchedulesDto[] = [
