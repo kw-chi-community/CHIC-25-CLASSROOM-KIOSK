@@ -6,13 +6,18 @@ export const fetchReservationNoticeDetail = async (noticeId: string) => {
       `${import.meta.env.VITE_API_URL}/api/notice-detail`,
       {
         method: "POST",
-
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ id: noticeId }),
       }
     );
 
     if (!response.ok) {
-      throw new Error("데이터를 가져오는 데 실패했습니다.");
+      const errorData = await response.json().catch(() => null);
+      throw new Error(
+        errorData?.message || "데이터를 가져오는 데 실패했습니다."
+      );
     }
 
     const data: fetchReservationNoticeDetailDto = await response.json();
