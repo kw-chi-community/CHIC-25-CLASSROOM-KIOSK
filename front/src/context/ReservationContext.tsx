@@ -40,7 +40,6 @@ export const ReservationProvider: React.FC<{ children: ReactNode }> = ({
     const now = new Date();
     return now.toISOString().split("T")[0];
   };
-  console.log("getCurrentDate"getCurrentDate());
 
   useEffect(() => {
     const fetchData = async () => {
