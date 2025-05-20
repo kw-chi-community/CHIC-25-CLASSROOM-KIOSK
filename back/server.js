@@ -12,6 +12,7 @@ app.use(express.json());
 // 라우터 등록
 app.use("/api", require("./routes/classroomReservation.js"));
 app.use("/api", require("./routes/noticeList.js"));
+app.use("/api", require("./routes/noticeDetail.js"));
 
 // 서버 실행
 const PORT = process.env.PORT || 4001;
