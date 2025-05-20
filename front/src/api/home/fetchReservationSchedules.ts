@@ -6,10 +6,13 @@ export const fetchReservationSchedules = async (
   date: string
 ) => {
   try {
-    const response = await fetch("/api/classroom-reservation", {
-      method: "POST",
-      body: JSON.stringify({ building, room, date }),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/classroom-reservation`,
+      {
+        method: "POST",
+        body: JSON.stringify({ building, room, date }),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("데이터를 가져오는 데 실패했습니다.");

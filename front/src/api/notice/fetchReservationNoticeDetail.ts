@@ -2,11 +2,14 @@ import { fetchReservationNoticeDetailDto } from "./dto/fetchReservationNoticeDet
 
 export const fetchReservationNoticeDetail = async (noticeId: string) => {
   try {
-    const response = await fetch("/api/notice-detail", {
-      method: "POST",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/notice-detail`,
+      {
+        method: "POST",
 
-      body: JSON.stringify({ id: noticeId }),
-    });
+        body: JSON.stringify({ id: noticeId }),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("데이터를 가져오는 데 실패했습니다.");
