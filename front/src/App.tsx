@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Notice from "./pages/Notice/Notice";
+import NoticeDetail from "./pages/NoticeDetail/NoticeDetail";
 import { ReservationProvider } from "./context/ReservationContext";
 
 const router = createBrowserRouter([
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: "/notice",
     element: <Notice />, // "/notice" URL에서는 Notice 컴포넌트 렌더링
+  },
+  {
+    path: "/notice/:noticeId",
+    element: <NoticeDetail />, // "/notice/:noticeId" URL에서는 NoticeDetail 컴포넌트 렌더링
   },
 ]);
 
