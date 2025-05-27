@@ -34,7 +34,7 @@ docker compose up
 
 ### 3. 서비스 접속
 
-http://localhost:3000
+http://localhost:3001
 
 컨테이너가 이상하게 동작하거나 캐시 문제로 잘 안 될 경우:
 ```bash
