@@ -22,8 +22,8 @@
 ### 1. 레포지토리 클론
 
 ```bash
-git clone https://github.com/kw-chi-community/CHIC-25-CLASSROOM-STUDENT.git
-cd CHIC-25-CLASSROOM-STUDENT
+git clone https://github.com/kw-chi-community/CHIC-25-CLASSROOM-KIOSK.git
+cd CHIC-25-CLASSROOM-KIOSK
 ```
 
 ### 2. Docker 컨테이너 실행
